@@ -1,0 +1,3 @@
+api.sayantanmishra.com {
+	reverse_proxy :8080
+}
