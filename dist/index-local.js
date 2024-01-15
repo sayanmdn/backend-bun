@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
-const mongoose_1 = require("mongoose");
+const mongoose_1 = __importDefault(require("mongoose"));
 const auth_1 = __importDefault(require("./src/routes/auth"));
 const private_1 = __importDefault(require("./src/routes/private"));
 const teachers_1 = __importDefault(require("./src/routes/teachers"));
@@ -28,10 +28,9 @@ app.get("/", (_req, res) => {
 const username = process.env.MONGO_USERNAME;
 const mongo_password = process.env.MONGO_PASSWORD;
 const uri = `mongodb+srv://${username}:${mongo_password}@backend-serverless.3e0kv62.mongodb.net/portfolio-db?retryWrites=true&w=majority`;
-console.log("uri ", uri);
 try {
-    (0, mongoose_1.connect)(uri);
-    const dbConnection = mongoose_1.connection;
+    mongoose_1.default.connect(uri);
+    const dbConnection = mongoose_1.default.connection;
     dbConnection.once("open", function () {
         console.log("MongoDB database connection established successfully");
     });

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run-build": "node index-local.js",
+    "start-build": "bun run ./dist/index-local.js",
     "test": "ts-node index.ts",
     "dev": "ts-node-dev index-local.ts",
     "build": "tsc -p .",
